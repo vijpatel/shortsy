@@ -1,4 +1,7 @@
 import os
+import logging
+from logging.handlers import RotatingFileHandler
+from flask.logging import default_handler
 from flask import Flask, render_template, request, flash, redirect, url_for, abort
 from fetch_details import fetch
 from requests import post
@@ -15,6 +18,13 @@ from custom_url_check import check
 #     return conn
 
 app = Flask(__name__)
+gunicorn_error_logger = logging.getLogger('gunicorn.error')
+app.logger.handlers.extend(gunicorn_error_logger.handlers)
+app.logger.setLevel(logging.DEBUG)
+app.logger.removeHandler(default_handler)
+app.logger.info('Starting the Flask User Management App...')
+
+
 app.config['SECRET_KEY'] = 'tHiSiSaSeCrEtKeY'
 app.config['DEBUG'] = os.getenv('DEBUG')
 app.config['RECAPTCHA_PUBLIC_KEY'] = os.getenv('PUBLIC_KEY')
