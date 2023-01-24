@@ -121,7 +121,4 @@ def error(e):
 #         urls.append(url)
 
 #     return render_template('stats.html', urls=urls)
-
-
-if __name__ == '__main__':
-    app.run(debug = app.config['DEBUG'])
+    
