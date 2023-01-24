@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+  {% block title %}View URL Details{% endblock %}
+
+{% block content %}
+  {% if data %}
+	<h2 class="title">There you go... </h2>
+    <div class="row">
+    <div class="col col-md-9">
+    <h4>Short URL: <a href="{{ data['short_url'] }}" target="_blank">{{ data['short_url'] }}</a>
+    </h4>
+    <h4>Goes to <i class="fa fa-arrow-down"></i></h4>
+    <h4>Long URL: <a href="{{ data['original_url'] }}" target="_blank">{{ data['original_url'] }}</a></h4>
+    <h4>Date Created: {{ data['date'].strftime("%c") }}</h4>
+    <h4>No of Clicks: {{ data['clicks'] }}</h4>
+  </div>
+  <div class="col col-md-3">
+  	<img src="https://api.qrserver.com/v1/create-qr-code/?data={{ data['short_url'] }}&amp;size=150x150" alt="QR Code for Short URL" title="QR Code for Short URL" />
+  </div>
+	</div>
+  {% endif %}
+  <div class="row">
+    <div class="col col-md-12">
+      <h4><a href="{{ url_for('view') }}"><i class="fa fa-arrow-left"></i>  Go Back</a></h4>
+    </div>  
+  </div>
+{% endblock %}
+{% block footer %}
+  <footer style="position: absolute;" class="footer">
+{% endblock %}

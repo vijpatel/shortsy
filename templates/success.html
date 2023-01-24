@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if short_url %}
+  <div class="row">
+	 <h2 class="title">Congratulations, {% block title %} shortsy URL {% endblock %}created successfully </h2>
+  </div>
+  <div class="row">
+    <h4>Your shortsy URL: <a href="{{ short_url }}" target="_blank">{{ request.url_root + short_url }}</a></h4>
+  </div>
+  <div class="row">
+
+    <h4>QR Code for Short URL:</h4>
+  </div>
+    <div class="row">
+
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ request.url_root + short_url }}&amp;size=150x150" alt="QR Code for Short URL" title="QR Code for Short URL" />
+  </div>
+  {% endif %}
+{% endblock %}
+{% block footer %}
+  <footer style="position: absolute;" class="footer">
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="title">{% block title %}About Shortsy{% endblock %}</h2>
+    <h5>Shortsy allows to reduce long links from different social media websites and various links on the Internet into short and customizable URLs, just paste the long URL and click the Shorten URL button. The user can copy the shortened URL and share it on websites, chat, e-mail and everywhere.</h5>
+    <h2 class="title">The Developer</h2>
+    <div class="row">
+      <div class="col col-md-3">
+        <img src="{{ url_for('static',filename = 'about.png') }}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid" width="200" height="200">
+      </div>
+      <div class="col col-md-9">
+        <h3 class="title" style="margin-top: 0px; margin-bottom: 10px;">Vij Patel</h3>
+        <h4>Pursuing M.Tech in CSE from MNIT Jaipur (2021-23)</h4>
+        <h4>Connect with me - <a href="https://www.linkedin.com/in/vijpatel/">LinkedIn</a></h4>
+      </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+  <footer style="position: absolute;" class="footer">
+{% endblock %}

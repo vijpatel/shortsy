@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="title">{% block title %} Welcome to URL Shortener {% endblock %}</h2>
+    <form method="post">
+    <div class="form-group has-info">
+        <h3>URL</h3>
+        <input type="text" name="url"
+               placeholder="Enter URL to shorten" class="form-control"
+               value="{{ request.form['url'] }}" autofocus/>
+    </div>
+<!--         <h3>URL</h3>    
+        <div class="form-group has-info">
+        <label for="exampleInput1" class="bmd-label-floating">Enter the URL</label>
+        <input type="text" name="url" 
+        class="form-control" value="{{ request.form['url'] }}" 
+        id="exampleInput1" autofocus/>
+        <span class="bmd-help">Enter a long URL to make a custom short URL</span>
+    </div>
+ -->
+    <div class="form-group">
+        <span>Advanced URL Options</span>
+        <br>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input has-info" id="random" type="radio" name="urloption" value="random" onclick="EnableDisableTextBox()" checked>
+                  Random Short URL
+                <span class="circle">
+                    <span class="check has"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input has-info" id="custom" type="radio" name="urloption" value="custom" onclick="EnableDisableTextBox()">
+                  Custom Short URL
+                <span class="circle">
+                    <span class="check has"></span>
+                </span>
+            <input type="text" id="customurl" name="customurl" disabled="disabled" />
+            </label>
+        </div>
+<!--         <span>
+            <input type="radio" id="random" name="urloption" value="random" onclick="EnableDisableTextBox()" checked/>
+            <label for="random">Random short URL</label>
+        </span>
+        <br>
+        <span>
+            <input type="radio" id="custom" name="urloption" value="custom" onclick="EnableDisableTextBox()" />
+            <label for="custom">Custom short URL: 127.0.0.1/</label>
+            <input type="text" id="customurl" name="customurl" disabled="disabled" />
+        </span>
+ -->    </div>
+
+    <div class="form-group">
+        <div class="g-recaptcha" data-sitekey="6LfU9NkaAAAAAABEFE4S2Je4BRNftkqxon7nYkN_"></div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info btn-round">Submit</button>
+    </div>
+    </form>
+    {% if short_url %}
+    <hr>
+    <span>{{ short_url }}</span>
+    {% endif %}
+{% endblock %}

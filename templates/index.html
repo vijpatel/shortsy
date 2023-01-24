@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h2 class="title">{% block title %} Welcome to Shortsy{% endblock %}, the custom URL Shortener </h2>
+    <form method="post">
+    <div class="form-group has-info">
+        <h3>Paste a long URL</h3>
+        <input type="text" name="url"
+               placeholder="Enter URL here" class="form-control"
+               value="{{ request.form['url'] }}" autofocus/>
+    </div>
+    <h4>Short URL Options</h4>
+        <div class="form-check">
+            <h4 style="margin-bottom: 0px;">
+            <label class="form-check-label">
+                <input class="form-check-input" id="random" type="radio" name="urloption" value="random" onclick="EnableDisableTextBox()" checked>
+                  Auto
+                <span class="circle">
+                    <span class="check has"></span>
+                </span>
+            </label>
+        </h4>
+        </div>
+        
+        <div class="form-check">
+            <h4>
+            <label class="form-check-label">
+                <input class="form-check-input" id="custom" type="radio" name="urloption" value="custom" onclick="EnableDisableTextBox()">
+                <span class="circle">
+                    <span class="check has"></span>
+                </span>
+                  Custom <br><br>     
+<!--             <input type="text" id="customurl" name="customurl" disabled="disabled" />
+ -->            </label>
+</h4>
+        </div>
+        <div class="row form-group">
+             <div class="col col-md-2"><h4>{{ request.url_root }}</h4></div>
+             <div class="col col-md-4">
+                <input class="form-control" type="text" id="customurl" name="customurl" disabled="disabled" /></div>
+            </div>
+    <div class="form-group">
+        <!--<div class="g-recaptcha" data-sitekey="6LfU9NkaAAAAAABEFE4S2Je4BRNftkqxon7nYkN_"></div>-->
+        <div class="g-recaptcha" data-sitekey="{{ app.config['RECAPTCHA_PUBLIC_KEY'] }}"></div>
+
+    </div>
+    
+	<div class="form-group">
+		<button type="submit" class="btn btn-info btn-round">Shorten</button>
+    </div>
+</form>
+<!--   <footer class="footer">
+	<div class="container">
+	  <div class="copyright float-centre">
+		&copy;
+		<script>
+		  document.write(new Date().getFullYear())
+		</script>, made with <i class="material-icons">favorite</i> by
+		<a href="https://www.creative-tim.com/" target="_blank">Vij Patel</a> for a better web.
+	  </div>
+	</div>
+  </footer> -->
+{% endblock %}
+{% block footer %}
+  <footer class="footer">
+{% endblock %}
