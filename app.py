@@ -116,7 +116,8 @@ def about():
 def error(e):
     return render_template('error.html')
 
-
+if __name__ == '__main__':
+    app.run(debug=True)
 # @app.route('/stats')
 # def stats():
 #     conn = get_db_connection()
